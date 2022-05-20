@@ -11,15 +11,16 @@ Dado dois números i e j, determine o máximo "tamanho do ciclo" dentre todos os
 import java.util.Scanner;
 
 public class thehuxley{
-
     public static void main(final String[] args) {
         int X, Y, cont, f, newf, newcont, min, max;
-
+        
+        /*Definir os numeros*/
         try (Scanner num = new Scanner(System.in)){
             X = num.nextInt();
             Y = num.nextInt();
         }
-
+        
+        /*Definir quem é o maior e o menor*/
         if(Y > X){
             max = Y;
             min = X;
@@ -29,9 +30,11 @@ public class thehuxley{
         }
         newcont = 0;
 
+        /*Passar por todos os numeros entre i e j*/
         for(f = min; f != max; f++){
             newf = f;
             cont = 1;
+            /*Calcular o numero de ciclos*/
             while(newf != 1){
                 if(newf % 2 == 0){
                     newf /= 2;
@@ -40,12 +43,13 @@ public class thehuxley{
                 }
                 cont ++;
             }
-
+            
+            /*Definir numero com maor ciclo*/
             if(cont > newcont){
                 newcont = cont;
             }
         }
-
+        
         System.out.printf("%d %d %d\n", X, Y, newcont);
     }
 }
